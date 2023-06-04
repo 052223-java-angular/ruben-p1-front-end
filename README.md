@@ -1,4 +1,4 @@
-# P1 - Aquatic Fishkeeper Simulator
+# P1 - Aquatic Fishkeeper
 
 ## Introduction
 
