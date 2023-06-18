@@ -2,3 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-orange-300 font-sans
+}
+
+nav {
+    @apply bg-amber-700
+}
