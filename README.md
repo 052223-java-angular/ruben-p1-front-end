@@ -1,68 +1,27 @@
-# P1 - Aquatic Fishkeeper
+# RubenP1
 
-## Introduction
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
 
-This is a full-stack web application that allows users to browse a catalog of aquatic species to simulate their own tank with the purpose to educate and entertain. This is built using HTML, CSS, JavaScript framework Angular using PostMan to communicate with the server.
+## Development server
 
-## User Stories
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-- **As a user**, I want to register an account so I can browse the fish catalog.
-- **As a user**, I want to log in so I can see my own fish.
-- **As a user**, I want to browse and save fish I own as a logged-in user.
-- **As a user**, I want to browse fish by categories: diet, tempermant, other.
-- **As a user**, I want to see if my owned fish are compatible with one another.
-- **As a user**, I want build my own fish tank with saved fish.
-- **As a user**, I want to see other users reviews on a fish to determine interest.
-- **As a user**, I want to learn more about the fish: description, name, statistics.
+## Code scaffolding
 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## MVP (Minimum Viable Product)
+## Build
 
-- User registration and login
-- Browsing and searching for products
-- Adding products to a shopping cart
-- Modifying the shopping cart
-- Secure payment process
-- Order history
-- Product rating and reviewing
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Stretch Goals
+## Running unit tests
 
-- I want to be able to simulate my fish tank using compatible fish.
-- Adding a research feature: additional API
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## API
-- **Fish Species**: https://rapidapi.com/myapos--FqlEzvrlv/api/fish-species
+## Running end-to-end tests
 
-## Tech Stacks
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-- **HTML-5**: The main markup language used for building the application.
-- **CSS**: Styling to apply to HTML
-- **PostgreSQL**: Used as the database to store user, product, and order data.
-- **Maven or Gradle**: Used for managing project dependencies.
-- **JUnit**: A testing framework for Java applications, used to ensure our code works as expected.
-- **Log4j**: A logging utility for debugging purposes.
-- **JDBC (Java Database Connectivity)**: An API for connecting and executing queries on the database.
-- **BCrypt**: A Java library for hashing and checking passwords for security.
-- **JUnit, Mockito, and PowerMock**: Used for unit and integration testing.
-- **Git and GitHub**: Used for version control.
-- **Angular**: TypeScript open-source JavaScript framework for stateless application.
+## Further help
 
-## Requirements
-
-- **Clean Codebase**: All code should be clean and well-documented. The repository should not include any unnecessary files or folders such as the `target/`, `.DS_Store`, etc. All files and directories should be appropriately named and organized.
-
-- **Database Design**: The database should be designed following the principles of the 3rd Normal Form (3NF) to ensure data integrity and efficiency. An Entity Relationship Diagram (ERD) should be included in the documentation.
-
-- **Secure**: All sensitive user data such as passwords must be securely hashed before storing it in the database. The application should not display any sensitive information in error messages.
-
-- **Error Handling**: The application should handle potential errors gracefully and provide clear and helpful error messages to the users.
-
-- **Testing**: The application should have a high test coverage. Unit tests and integration tests should be implemented using JUnit, Mockito, and PowerMock.
-
-- **Version Control**: The application should be developed using a version control system, preferably Git, with regular commits denoting progress.
-
-- **Documentation**: The repository should include a README file with clear instructions on how to run the application. Code should be well-commented to allow for easy understanding and maintenance.
-
-- **Scalable**: The design of the application should be scalable, allowing for easy addition of new features or modifications in the future.
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
