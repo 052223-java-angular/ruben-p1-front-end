@@ -7,6 +7,8 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,10 @@ import { RegisterComponent } from './pages/register/register.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    // import HttpClientModule after BrowserModule.
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

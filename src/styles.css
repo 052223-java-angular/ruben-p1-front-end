@@ -3,10 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: 'hyrule';
+        src: url('src/test/zelda-font.otf');
+    }
+}
 body {
-    @apply bg-orange-300 font-sans
+    @apply bg-[#E1D4BB]
 }
 
 nav {
-    @apply bg-amber-700
+    @apply bg-[#CBB279]
 }
