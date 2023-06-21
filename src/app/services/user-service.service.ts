@@ -17,4 +17,8 @@ export class UserServiceService {
   getUsers(): Observable<UsersAllPayload[]>{
     return this.http.get<UsersAllPayload[]>(`${this.baseurl}/users/all`);
   }
+
+  sortAlpha(): Observable<UsersAllPayload[]>{
+    return this.http.get<UsersAllPayload[]>(`${this.baseurl}/users/all`);
+  }
 }
