@@ -10,9 +10,11 @@
     }
 }
 body {
-    @apply bg-[#E1D4BB]
+    @apply bg-[#E1D4BB] font-hyrule
 }
 
 nav {
     @apply bg-[#CBB279]
 }
+
+

@@ -4,12 +4,14 @@ import {HomeComponent} from "./pages/home/home.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import { LoginComponent} from "./pages/login/login.component";
+import { UsersComponent} from "./pages/users/users.component";
 
 // add components to map here
 const routes: Routes = [
     { path: '', component: HomeComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'login', component: LoginComponent},
+    { path: 'users', component: UsersComponent},
     {path: '**', component:NotFoundComponent}
 ];
 
