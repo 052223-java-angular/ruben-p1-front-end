@@ -1,0 +1,23 @@
+<p>creatures works!</p>
+
+<div *ngIf="creatures">
+
+    <div *ngFor="let c of creatures"
+         class = "flex justify-evenly gap-5 px-5 py-10 shadow-xl cursor-pointer transition hover:bg-[#9FC088] duration-300"
+         (click)="onRowClicked(c)">
+
+        <div class = "flex justify-evenly">
+            <img src="{{c.image}}">
+            <div class=" flex-col pl-5 pr-5">
+                <h2 class="font-bold text-5xl">{{c.name}}</h2>
+                <p class="pt-10 text-2xl">{{c.description}}</p>
+                <p class="pt-10 text-2xl"><b>Locations:</b> {{c.common_locations}}</p>
+            </div>
+        </div>
+
+        <div class="bg-amber-600 px-10 py-10 rounded-md transition hover:bg-slate-400">
+            <p>FIGHT</p>
+        </div>
+
+    </div>
+</div>

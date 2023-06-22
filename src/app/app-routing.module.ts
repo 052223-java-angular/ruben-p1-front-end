@@ -5,6 +5,8 @@ import {NotFoundComponent} from "./pages/not-found/not-found.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import { LoginComponent} from "./pages/login/login.component";
 import { UsersComponent} from "./pages/users/users.component";
+import {CreaturesComponent} from "./pages/creatures/creatures.component";
+import {DetailsComponent} from "./pages/details/details.component";
 
 // add components to map here
 const routes: Routes = [
@@ -12,6 +14,8 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'login', component: LoginComponent},
     { path: 'users', component: UsersComponent},
+    { path: 'creatures', component: CreaturesComponent},
+    {path: 'details/:selected', component: DetailsComponent},
     {path: '**', component:NotFoundComponent}
 ];
 
