@@ -11,7 +11,13 @@
             <div class=" flex-col pl-5 pr-5">
                 <h2 class="font-bold text-5xl">{{c.name}}</h2>
                 <p class="pt-10 text-2xl">{{c.description}}</p>
-                <p class="pt-10 text-2xl"><b>Locations:</b> {{c.common_locations}}</p>
+                <p class="pt-5 text-2xl"><b>Locations:</b></p>
+
+                    <div *ngFor="let x of c.common_locations" >
+                        {{x}}
+                    </div>
+
+
             </div>
         </div>
 

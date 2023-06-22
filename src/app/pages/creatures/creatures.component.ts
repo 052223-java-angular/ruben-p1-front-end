@@ -23,7 +23,6 @@ export class CreaturesComponent {
         var array = this.creatures;
         array.sort((a,b) => a.name.localeCompare(b.name));
 
-
         console.log("results are", resp.data)
       },
       error: (err) => {
@@ -34,8 +33,8 @@ export class CreaturesComponent {
 
   onRowClicked(c: CreaturePayload) {
     console.log(c.name);
-
-    //this.router.navigate([c.name])
+    let temp = c.name;
+    this.router.navigate([`details/`+ (c.name)])
   }
 
 

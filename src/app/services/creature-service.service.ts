@@ -12,9 +12,18 @@ export class CreatureServiceService {
 
   // set the base url
   baseurl = 'https://botw-compendium.herokuapp.com/api/v2'
+
+  siteUrl = 'http://localhost:8080/api'
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<CreaturePayload[]>{
     return this.http.get<any[]>(`${this.baseurl}/category/monsters`);
   }
+
+  // takes passed param and applies to endpoint for retrieval
+  getCreatureName(name: string) {
+    return this.http.get<any>(`${this.baseurl}`+`/entry/`+ name);
+  }
+
+
 }
