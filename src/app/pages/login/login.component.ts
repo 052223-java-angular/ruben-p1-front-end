@@ -37,7 +37,13 @@ export class LoginComponent {
     this.authService.login(payload).subscribe({
       next: value => {
         console.log("Welcome back!");
-        console.log(value.username);
+        localStorage.setItem(`auth`, JSON.stringify(value.token));
+        localStorage.setItem('username', JSON.stringify(value.username));
+        localStorage.setItem('user_id', JSON.stringify(value.id));
+
+        console.log(value);
+        console.log(localStorage.getItem(`auth`));
+        console.log(localStorage.getItem(`username`));
         this.router.navigate([''])
       },
       error: err => {

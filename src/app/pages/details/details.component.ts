@@ -3,6 +3,9 @@ import {UsersAllPayload} from "../../models/users-all-payload";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import { CreatureServiceService} from "../../services/creature-service.service";
 import {CreaturePayload} from "../../models/creature-payload";
+import { SoldierPayload} from "../../models/soldier-payload";
+import  { UserServiceService} from "../../services/user-service.service";
+
 
 @Component({
   selector: 'app-details',
@@ -14,8 +17,9 @@ export class DetailsComponent implements  OnInit{
   public creature!: CreaturePayload
 
   // sets name to be the passed param
-  constructor(private route: ActivatedRoute, private creatureService: CreatureServiceService) {
+  constructor(private route: ActivatedRoute, private creatureService: CreatureServiceService, private userService: UserServiceService) {
     this.name = this.route.snapshot.params['name']
+    console.log(this.route.snapshot.params[''])
   }
 
   ngOnInit() {
@@ -29,5 +33,26 @@ export class DetailsComponent implements  OnInit{
         console.log(err);
       }
     })
+  }
+
+  addToArmy() {
+    let army_id = this.userService.getUserArmy()
+
+    const soldier: SoldierPayload = {
+      name: this.creature.name,
+      description: this.creature.description,
+      image: this.creature.image,
+      army_id: <any>army_id,
+      user_id: <any>localStorage.getItem('username'),
+    };
+    this.creatureService.postCreature(soldier).subscribe({
+      next:() => {
+        this.ngOnInit();
+        console.log("Soldier has been added");
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

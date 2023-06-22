@@ -1,20 +1,28 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import {UsersAllPayload} from "../models/users-all-payload";
 import {CreaturePayload} from "../models/creature-payload";
 import {CreatureObjectPayload} from "../models/creature-object-payload";
+import { UserServiceService} from "./user-service.service";
+import {SoldierPayload} from "../models/soldier-payload";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreatureServiceService {
-
   // set the base url
   baseurl = 'https://botw-compendium.herokuapp.com/api/v2'
 
+  // authenticate services
+  httpOptions = {
+    headers: new HttpHeaders({
+      'auth-token': this.userService.getAuth()?.token!,
+    }),
+  };
+
   siteUrl = 'http://localhost:8080/api'
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserServiceService) { }
 
   getUsers(): Observable<CreaturePayload[]>{
     return this.http.get<any[]>(`${this.baseurl}/category/monsters`);
@@ -24,6 +32,19 @@ export class CreatureServiceService {
   getCreatureName(name: string) {
     return this.http.get<any>(`${this.baseurl}`+`/entry/`+ name);
   }
+
+  //adds a new creature to users army
+  postCreature(soldier: SoldierPayload) {
+    return this.http.post<void>(
+        `${this.baseurl}` + `/{name}/add`,
+        soldier,
+        this.httpOptions
+    );
+  }
+
+
+    //return this.http.post<any>(`${this.baseurl}` + `/hello`);
+
 
 
 }

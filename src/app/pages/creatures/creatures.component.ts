@@ -17,7 +17,11 @@ export class CreaturesComponent {
 
   ngOnInit() {
     this.creatureService.getUsers().subscribe({
+
+
       next: (resp: any) => {
+
+        console.log(localStorage.getItem('username'));
         this.creatures = resp.data;
 
         var array = this.creatures;
