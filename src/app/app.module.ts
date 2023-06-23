@@ -13,6 +13,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { UsersComponent } from './pages/users/users.component';
 import { CreaturesComponent } from './pages/creatures/creatures.component';
 import { DetailsComponent } from './pages/details/details.component';
+import {NgOptimizedImage} from "@angular/common";
+import {SessionService} from "./services/session.service";
 
 @NgModule({
   declarations: [
@@ -26,14 +28,15 @@ import { DetailsComponent } from './pages/details/details.component';
     CreaturesComponent,
     DetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    // import HttpClientModule after BrowserModule.
-    HttpClientModule
-  ],
-  providers: [],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        // import HttpClientModule after BrowserModule.
+        HttpClientModule,
+        NgOptimizedImage
+    ],
+  providers: [SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

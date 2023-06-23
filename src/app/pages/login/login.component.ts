@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthServiceService} from "../../services/auth-service.service";
 import {Router} from "@angular/router";
 import {LoginPayload} from "../../models/login-payload";
+import { SessionService} from "../../services/session.service";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
 
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthServiceService, private router: Router) {}
+  constructor(private fb: FormBuilder, private authService: AuthServiceService, private router: Router, private sessionService: SessionService) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -35,15 +36,15 @@ export class LoginComponent {
 
     // call service to send payload to backend api
     this.authService.login(payload).subscribe({
+
       next: value => {
         console.log("Welcome back!");
-        localStorage.setItem(`auth`, JSON.stringify(value.token));
-        localStorage.setItem('username', JSON.stringify(value.username));
-        localStorage.setItem('user_id', JSON.stringify(value.id));
 
-        console.log(value);
-        console.log(localStorage.getItem(`auth`));
-        console.log(localStorage.getItem(`username`));
+        this.sessionService.user_id = value.id;
+        this.sessionService.username = value.username;
+        this.sessionService.token = value.token;
+
+
         this.router.navigate([''])
       },
       error: err => {

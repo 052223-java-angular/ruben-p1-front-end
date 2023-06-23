@@ -2,7 +2,8 @@
 
 <div class = "flex justify-evenly gap-5 px-5 py-10 shadow-xl cursor-pointer transition hover:bg-[#9FC088] duration-300">
     <div class = "flex justify-evenly">
-        <img src="{{creature.image}}">
+        <img src="{{creature.image}}" >
+
         <div class=" flex-col pl-5 pr-5">
             <h2 class="font-bold text-5xl">{{creature.name}}</h2>
             <p class="pt-10 text-2xl">{{creature.description}}</p>
@@ -11,8 +12,6 @@
             <div *ngFor="let x of creature.common_locations" >
                 {{x}}
             </div>
-
-
         </div>
     </div>
 

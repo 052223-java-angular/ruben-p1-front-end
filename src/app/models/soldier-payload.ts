@@ -4,4 +4,6 @@ export interface  SoldierPayload {
     image: string;
     army_id: string;
     user_id: string;
+    token: string;
+    username: string;
 }

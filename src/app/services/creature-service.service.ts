@@ -14,17 +14,23 @@ export class CreatureServiceService {
   // set the base url
   baseurl = 'https://botw-compendium.herokuapp.com/api/v2'
 
+  siteUrl = 'http://localhost:8080/api/monsters/'
+
+
+
   // authenticate services
-  httpOptions = {
+  /*httpOptions = {
+
     headers: new HttpHeaders({
       'auth-token': this.userService.getAuth()?.token!,
     }),
-  };
+  };*/
 
-  siteUrl = 'http://localhost:8080/api'
+
   constructor(private http: HttpClient, private userService: UserServiceService) { }
 
   getUsers(): Observable<CreaturePayload[]>{
+
     return this.http.get<any[]>(`${this.baseurl}/category/monsters`);
   }
 
@@ -35,10 +41,11 @@ export class CreatureServiceService {
 
   //adds a new creature to users army
   postCreature(soldier: SoldierPayload) {
+    console.log(localStorage.getItem(JSON.stringify(soldier)));
     return this.http.post<void>(
-        `${this.baseurl}` + `/{name}/add`,
-        soldier,
-        this.httpOptions
+        `${this.siteUrl}`+ soldier.name + `/add`,
+        soldier
+        //this.httpOptions
     );
   }
 

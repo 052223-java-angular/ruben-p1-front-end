@@ -4,6 +4,8 @@ import {UserServiceService} from "../../services/user-service.service";
 import {CreaturePayload} from "../../models/creature-payload";
 import {CreatureServiceService} from "../../services/creature-service.service";
 import {Router} from "@angular/router";
+import {SessionService} from "../../services/session.service";
+
 
 @Component({
   selector: 'app-creatures',
@@ -13,9 +15,12 @@ import {Router} from "@angular/router";
 export class CreaturesComponent {
   public creatures: CreaturePayload[] = [];
 
-  constructor(private creatureService: CreatureServiceService, private router: Router) { }
+  constructor(private creatureService: CreatureServiceService, private router: Router, private  sessionService: SessionService) { }
 
   ngOnInit() {
+    console.log(this.sessionService.username);
+    console.log(this.sessionService.user_id);
+    console.log(this.sessionService.token);
     this.creatureService.getUsers().subscribe({
 
 
