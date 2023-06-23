@@ -1,13 +1,34 @@
 <p>profile works!</p>
 
-<div>
+<div class="flex justify-items-stretch">
 
-    <p>{{user.username}} </p>
-    <p>{{user.id}} </p>
-    <p>{{user.army_id}} </p>
-    <p>{{user.stats_id}} </p>
+    <div>
+        <p>{{user.username}} </p>
+        <p>{{user.id}} </p>
+        <p>{{user.army_id}} </p>
+        <p>{{user.stats_id}} </p>
+    </div>
+
+    <button (click)="openSoldiers()">Open Army</button>
+
+    <button (click)="openSoldiers()"> Open Army Roster</button>
+
+    <div  *ngIf="list">
+
+        <p>hello test</p>
+
+        <div *ngFor="let a of army" class = "flex justify-evenly gap-5 px-5 py-10 shadow-xl cursor-pointer transition hover:bg-[#9FC088] duration-300">
+            <div class = "flex justify-evenly w-1/2">
+                <div class=" flex-col pl-5 pr-5">
+                    <h2 class="font-bold text-5xl">{{a.name}}</h2>
+                    <p class="pt-10 text-2xl">{{a.description}}</p>
+                </div>
+                <img src="{{a.image}}" class="right-5 object-contain">
+            </div>
+            <p> testing</p>
+        </div>
+
+    </div>
+
 
 </div>
-
-
-<button (click)="openSoldiers()">Open Army</button>

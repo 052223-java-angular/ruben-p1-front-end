@@ -18,11 +18,7 @@ export class CreaturesComponent {
   constructor(private creatureService: CreatureServiceService, private router: Router, private  sessionService: SessionService) { }
 
   ngOnInit() {
-    console.log(this.sessionService.username);
-    console.log(this.sessionService.user_id);
-    console.log(this.sessionService.token);
     this.creatureService.getUsers().subscribe({
-
 
       next: (resp: any) => {
 

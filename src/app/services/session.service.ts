@@ -5,20 +5,22 @@ import {AuthServiceService} from "./auth-service.service";
   providedIn: 'root'
 })
 export class SessionService {
-  public username: any;
-  public user_id: any;
   public army_id: any;
   public stats_id: any;
   public token: any;
 
   //return username
-  getUserCredentials():string {
-    return this.username;
+  getArmyId():string {
+    return this.army_id;
+  }
+
+  setArmyId(armyid: string): void {
+    this.army_id = armyid;
   }
 
   //return user id
-  getUserIDCredentials():string {
-    return this.user_id;
+  getStatsId():string {
+    return this.stats_id;
   }
 
   //return a session token
