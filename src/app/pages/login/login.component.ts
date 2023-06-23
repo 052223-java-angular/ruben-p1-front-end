@@ -40,10 +40,10 @@ export class LoginComponent {
       next: value => {
         console.log("Welcome back!");
 
-        this.sessionService.user_id = value.id;
-        this.sessionService.username = value.username;
-        this.sessionService.token = value.token;
-
+        sessionStorage.setItem('user', value.username);
+        sessionStorage.setItem('token', value.token);
+        sessionStorage.setItem('id', value.id);
+        sessionStorage.setItem('role', value.role);
 
         this.router.navigate([''])
       },
@@ -55,5 +55,7 @@ export class LoginComponent {
 
     console.log(this.loginForm.value);
   }
+
+
 
 }

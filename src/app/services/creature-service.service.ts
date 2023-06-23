@@ -19,12 +19,12 @@ export class CreatureServiceService {
 
 
   // authenticate services
-  /*httpOptions = {
+  httpOptions = {
 
     headers: new HttpHeaders({
       'auth-token': this.userService.getAuth()?.token!,
     }),
-  };*/
+  };
 
 
   constructor(private http: HttpClient, private userService: UserServiceService) { }

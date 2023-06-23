@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+    protected readonly sessionStorage = sessionStorage;
+
+    onLogout() {
+        sessionStorage.clear();
+        localStorage.clear();
+        console.log("User has logged out");
+    }
 }

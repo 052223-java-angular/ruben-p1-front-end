@@ -19,12 +19,7 @@ import {UsernamePayload} from "../../models/username-payload";
 export class DetailsComponent implements  OnInit{
   public name: string = "";
   public creature!: CreaturePayload;
-  public army!: ArmyPayload;
-
-  // sets name to be the passed param
-  private username: string = JSON.stringify(localStorage.getItem('username'));
-  private token: string = JSON.stringify(localStorage.getItem('auth'));
-
+  public army: any = {};
 
   // constructor
   constructor(private route: ActivatedRoute,
@@ -32,14 +27,21 @@ export class DetailsComponent implements  OnInit{
               private userService: UserServiceService,
               private sessionService: SessionService
               ) {
-      this.name = this.route.snapshot.params['name'],
-      console.log(this.route.snapshot.params[''])
+
+      this.name = this.route.snapshot.params['name']
   }
 
+  // get user army
+  getArmy(username: string) {
+    this.userService.getArmy(username).subscribe(data => this.army = data);
+  }
+
+
   ngOnInit() {
-    console.log(this.sessionService.username);
-    console.log(this.sessionService.user_id);
-    console.log(this.sessionService.token);
+    console.log(sessionStorage.getItem('user'))
+    console.log(sessionStorage.getItem('id'))
+    console.log(sessionStorage.getItem('token'))
+
     this.creatureService.getCreatureName(this.name).subscribe({
 
       next: (resp: any) => {
@@ -53,17 +55,18 @@ export class DetailsComponent implements  OnInit{
       }
     })
 
-    const army: UsernamePayload = {
-      username: this.sessionService.username,
-    };
-
-    console.log(`[details.ts] username: ` + this.sessionService.username);
+    // get the user army
     this.userService.getUserArmy().subscribe({
 
-
       next: (resp: any) => {
-        console.log('getting user army', resp);
-        this.army = resp.data;
+        console.log('getting user army', resp)
+
+        this.army = resp.data.data
+
+        var array: ArmyPayload[] = this.army;
+
+        console.log('passed storage set army')
+
       },
       error: (err) => {
         console.log('error with retrieving army');
@@ -87,9 +90,9 @@ export class DetailsComponent implements  OnInit{
       description: this.creature.description,
       image: this.creature.image,
       army_id: 'c3d89f02-7485-4eb6-b268-45025cc1364b',
-      token: this.token,
-      username: this.sessionService.username,
-      user_id: JSON.parse(localStorage.getItem('user_id')!)
+      token: sessionStorage.getItem('token')!,
+      username: sessionStorage.getItem('user')!,
+      user_id: sessionStorage.getItem('id')!
     };
 
     this.creatureService.postCreature(soldier).subscribe({
