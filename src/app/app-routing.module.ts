@@ -8,6 +8,7 @@ import { UsersComponent} from "./pages/users/users.component";
 import {CreaturesComponent} from "./pages/creatures/creatures.component";
 import {DetailsComponent} from "./pages/details/details.component";
 import {ProfileComponent} from "./pages/profile/profile.component";
+import {ArmyComponent} from "./pages/army/army.component";
 
 // add components to map here
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: 'creatures', component: CreaturesComponent},
     {path: 'details/:name', component: DetailsComponent},
     {path: 'details/user/:name', component: DetailsComponent},
-    {path: 'profile', component: ProfileComponent},
+    {path: 'profile/:username', component: ProfileComponent},
+    {path: 'army/:name', component: ArmyComponent},
     {path: '**', component:NotFoundComponent}
 ];
 

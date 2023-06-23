@@ -3,7 +3,7 @@
 <div *ngIf="users">
     <div *ngFor="let u of users"
          class = "flex justify-evenly gap-5 px-5 py-10 shadow-xl cursor-pointer transition hover:bg-[#9FC088] duration-300"
-        [routerLink]="['/details/user', u.username]">
+        [routerLink]="['/profile', u.username]">
         <div>
             <p class="text-2xl">{{u.username}}</p>
             <p>ID: {{u.id}}</p>
@@ -15,7 +15,5 @@
             <p>FIGHT</p>
         </div>
     </div>
-
-
-
+    
 </div>

@@ -1,9 +1,9 @@
 <p>home works!</p>
 
-<div class="grid-flow-row pl-20 pr-20">
+<div class="flex justify-evenly space-x-4 pl-20 pr-20">
 
-    <button *ngIf="sessionStorage.getItem('user') != null" class="bg-[#537188] px-32 py-52 shadow rounded-md transition hover:scale-125 duration-300 text-7xl font-hyrule" routerLink="/profile"> Profile </button>
-    <button class=" bg-[#9FC088] px-32 py-52 shadow rounded-md transition hover:scale-125 font-hyrule text-7xl" routerLink="/creatures"> Creatures</button>
-    <button class="bg-[#CC704B] px-32 py-52 shadow rounded-md transition hover:scale-125 font-hyrule text-7xl" routerLink="/users"> Users</button>
+    <button *ngIf="sessionStorage.getItem('user') != null" class="bg-[#537188] px-32 py-52 shadow rounded-md transition hover:scale-125 duration-800 text-7xl font-hyrule" routerLink="/profile/{{username}}"> Profile </button>
+    <button class=" bg-[#9FC088] px-32 py-52 shadow rounded-md transition hover:scale-125 font-hyrule text-7xl duration-800" routerLink="/creatures"> Creatures</button>
+    <button class="bg-[#CC704B] px-32 py-52 shadow rounded-md transition hover:scale-125 font-hyrule text-7xl duration-800" routerLink="/users"> Users</button>
 
 </div>

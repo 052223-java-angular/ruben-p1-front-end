@@ -19,9 +19,7 @@ import {UsernamePayload} from "../../models/username-payload";
 export class DetailsComponent implements  OnInit{
   public name: string = "";
   public creature!: CreaturePayload;
-  public army: any = {};
-
-  // constructor
+  public army!: ArmyPayload
   constructor(private route: ActivatedRoute,
               private creatureService: CreatureServiceService,
               private userService: UserServiceService,
@@ -33,7 +31,7 @@ export class DetailsComponent implements  OnInit{
 
   // get user army
   getArmy(username: string) {
-    this.userService.getArmy(username).subscribe(data => this.army = data);
+    //this.userService.getArmy(username).subscribe(data => this.army = data);
   }
 
 
@@ -56,14 +54,14 @@ export class DetailsComponent implements  OnInit{
     })
 
     // get the user army
-    this.userService.getUserArmy().subscribe({
+    this.userService.getUserArmy(sessionStorage.getItem('user')!).subscribe({
 
       next: (resp: any) => {
         console.log('getting user army', resp)
 
         this.army = resp.data.data
 
-        var array: ArmyPayload[] = this.army;
+        var army_details: ArmyPayload = this.army;
 
         console.log('passed storage set army')
 

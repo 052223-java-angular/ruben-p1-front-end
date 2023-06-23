@@ -16,6 +16,7 @@ import { DetailsComponent } from './pages/details/details.component';
 import {NgOptimizedImage} from "@angular/common";
 import {SessionService} from "./services/session.service";
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ArmyComponent } from './pages/army/army.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     UsersComponent,
     CreaturesComponent,
     DetailsComponent,
-    ProfileComponent
+    ProfileComponent,
+    ArmyComponent
   ],
     imports: [
         BrowserModule,

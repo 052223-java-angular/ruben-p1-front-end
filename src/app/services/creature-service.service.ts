@@ -30,7 +30,6 @@ export class CreatureServiceService {
   constructor(private http: HttpClient, private userService: UserServiceService) { }
 
   getUsers(): Observable<CreaturePayload[]>{
-
     return this.http.get<any[]>(`${this.baseurl}/category/monsters`);
   }
 

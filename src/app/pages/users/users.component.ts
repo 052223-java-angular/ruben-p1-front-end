@@ -24,4 +24,8 @@ export class UsersComponent implements  OnInit{
     })
   }
 
+  getUser(username: string) {
+
+  }
+
 }

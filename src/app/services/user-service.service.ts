@@ -30,16 +30,22 @@ export class UserServiceService {
     return this.http.get<UsersAllPayload[]>(`${this.baseurl}/users/all`)
   }
 
-  getUserArmy(): Observable<ArmyPayload>{
-    let queryParams = new HttpParams().set('username', sessionStorage.getItem('username')!)
-    console.log(`Username get army: `+ sessionStorage.getItem('user'))
+  getUser(username: string): Observable<UsersAllPayload> {
+    let queryParams = new HttpParams().set('username', username)
+    console.log(username);
+    return this.http.get<UsersAllPayload>(`${this.baseurl}/users/`+ username, {params: queryParams});
+  }
 
+  getUserArmy(username: string): Observable<ArmyPayload>{
+    //let queryParams = new HttpParams().set('username', sessionStorage.getItem('username')!)
+    let queryParams = new HttpParams().set('username', username)
     return this.http.get<ArmyPayload>(`${this.baseurl}/armies/` + sessionStorage.getItem('user'), {params: queryParams})
   }
 
   // get by param
   getArmy(username: string) {
-    console.log(`hitting new get army`)
+    let queryParams: HttpParams = new HttpParams().set('username', username)
+    console.log(`hitting new get other users army`)
     return this.http.get(`${this.baseurl}armies/${username}`)
   }
 
