@@ -43,9 +43,10 @@ export class DetailsComponent implements  OnInit{
     this.creatureService.getCreatureName(this.name).subscribe({
 
       next: (resp: any) => {
+        console.log("results are", resp.data)
         this.creature = resp.data;
 
-        console.log("results are", resp.data)
+
       },
 
       error: (err) => {
@@ -59,7 +60,7 @@ export class DetailsComponent implements  OnInit{
       next: (resp: any) => {
         console.log('getting user army', resp)
 
-        this.army = resp.data.data
+        this.army = resp.data
 
         var army_details: ArmyPayload = this.army;
 
@@ -104,4 +105,6 @@ export class DetailsComponent implements  OnInit{
       },
     });
   }
+
+  protected readonly sessionStorage = sessionStorage;
 }

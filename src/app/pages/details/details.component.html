@@ -1,28 +1,40 @@
-<p>details works!</p>
+<div class = "gap-5 px-5 py-10 shadow-xl cursor-pointer">
 
-<div class = "flex justify-evenly gap-5 px-5 py-10 shadow-xl cursor-pointer transition duration-300">
-    <div class = "flex justify-evenly">
-        <img src="{{creature.image}}" class="object-contain">
+    <ng-container *ngIf="creature">
 
-        <div class=" flex-col pl-5 pr-5">
-            <h2 class="font-bold text-9xl">{{creature.name}}</h2>
-            <p class="pt-10 text-6xl">{{creature.description}}</p>
-            <p class="pt-5 text-5xl"><b>Locations:</b></p>
+        <div class = "flex justify-between">
 
-            <div class="flex order-1 justify-between">
-                <div *ngFor="let x of creature.common_locations" >
-                    {{x}}
+            <div class="flex-col">
+                <img src="{{creature.image}}" class="max-w-fit">
+
+                <div class="pt-10 object-bottom">
+                    <button *ngIf="sessionStorage.getItem('user') != null" class="bg-amber-600 px-11 py-10 rounded-md transition hover:bg-slate-400"
+                            (click)="addToArmy()">
+                        <p>Add To Army</p>
+                    </button>
+
+                    <button *ngIf="sessionStorage.getItem('user') == null" class="bg-slate-400 px-11 py-10 rounded-md transition hover:bg-slate-400" routerLink="/register">
+                        <p>Register to enlist</p>
+                    </button>
                 </div>
+            </div>
 
-                <div class="bg-amber-600 px-11 py-10 rounded-md transition hover:bg-slate-400"
-                     (click)="addToArmy()">
-                    <p>Add To Army</p>
+
+
+            <div class="flex-col pl-5 pr-5 w-2/3">
+
+                <h2 class="font-bold text-9xl">{{creature.name}}</h2>
+                <p class="pt-10 text-6xl">{{creature.description}}</p>
+                <p class="pt-5 text-5xl"><b>Locations:</b></p>
+
+                <div class="flex order-1 justify-between">
+                    <div *ngFor="let x of creature.common_locations" >
+                        {{x}}
+                    </div>
                 </div>
             </div>
 
         </div>
-    </div>
-
-
+    </ng-container>
 
 </div>

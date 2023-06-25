@@ -17,4 +17,8 @@ nav {
     @apply bg-[#CBB279]
 }
 
+footer {
+    @apply bottom-0
+}
+
 

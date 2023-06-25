@@ -6,16 +6,18 @@
          class = "flex justify-evenly gap-5 px-5 py-10 shadow-xl cursor-pointer transition hover:bg-[#9FC088] duration-300"
          (click)="onRowClicked(c)">
 
-        <div class = "flex justify-evenly">
-            <img src="{{c.image}}" class="left-5 object-contain">
+        <div class = "flex justify-between">
+            <img src="{{c.image}}" class="left-5 object-left-top">
             <div class=" flex-col pl-5 pr-5">
                 <h2 class="font-bold text-5xl">{{c.name}}</h2>
                 <p class="pt-10 text-2xl">{{c.description}}</p>
                 <p class="pt-5 text-2xl"><b>Locations:</b></p>
 
-                    <div *ngFor="let x of c.common_locations" >
+                <div class="flex-row">
+                    <p *ngFor="let x of c.common_locations">
                         {{x}}
-                    </div>
+                    </p>
+                </div>
 
 
             </div>

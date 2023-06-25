@@ -16,10 +16,12 @@ import {CreaturePayload} from "../../models/creature-payload";
 
 export class ProfileComponent {
   public username!: string;
+  public manage: boolean = false;
   public army_id: string = "";
   public user!: UsersAllPayload;
   public army: SoldierModel[] = [];
   public list: boolean = false;
+  protected readonly sessionStorage = sessionStorage;
 
   global() {
     this.ngOnInit();
@@ -55,6 +57,24 @@ export class ProfileComponent {
 
   }
 
+  // dismiss that soldier
+  dismissSoldier(soldier_id: string) {
+    console.log('manage:'+ this.manage + ', deleting soldier: ' + soldier_id)
+    if (this.manage == true) {
+      this.armyService.deleteSoldiers(soldier_id);
+    }
+  }
+
+  // view army
+  manageArmy(){
+    if (this.manage ==  false) {
+      this.manage = true;
+    } else {
+      this.manage = false;
+    }
+    console.log('manage army hit and set to: '+ this.manage)
+  }
+
   ngOnInit() {
     this.userService.getUser(this.username).subscribe({
 
@@ -74,4 +94,6 @@ export class ProfileComponent {
   ngAfterViewInit() {
     this.openSoldiers();
   }
+
+
 }
