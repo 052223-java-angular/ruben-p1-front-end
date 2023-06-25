@@ -29,7 +29,9 @@ export class UserServiceService {
               private sessionService: SessionService) { }
 
   getUsers(): Observable<UsersAllPayload[]>{
-    return this.http.get<UsersAllPayload[]>(`${this.baseurl}/users/all`)
+    console.log("Get all users hit")
+    console.log(this.baseurl + `/users/all`)
+    return this.http.get<UsersAllPayload[]>(this.baseurl+'/users/all');
   }
 
   getUser(username: string): Observable<UsersAllPayload> {

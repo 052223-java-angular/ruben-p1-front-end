@@ -24,6 +24,7 @@ export class ArmyServiceService {
 
   // get soldiers tied with a user and their army tag
   getSoldiers(army_id: string): Observable<CreaturePayload[]> {
+    console.log("Getting user profile soldiers..." + army_id)
     return this.http.get<any[]>(`${this.baseurl}/soldier/` + army_id);
   }
 

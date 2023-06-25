@@ -9,6 +9,7 @@ import {ArmyPayload} from "../../models/army-payload";
 import {Observable} from "rxjs";
 import { SessionService} from "../../services/session.service";
 import {UsernamePayload} from "../../models/username-payload";
+import { Location} from "@angular/common";
 
 
 @Component({
@@ -23,7 +24,8 @@ export class DetailsComponent implements  OnInit{
   constructor(private route: ActivatedRoute,
               private creatureService: CreatureServiceService,
               private userService: UserServiceService,
-              private sessionService: SessionService
+              private sessionService: SessionService,
+              private _location: Location
               ) {
 
       this.name = this.route.snapshot.params['name']
@@ -32,6 +34,10 @@ export class DetailsComponent implements  OnInit{
   // get user army
   getArmy(username: string) {
     //this.userService.getArmy(username).subscribe(data => this.army = data);
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
 

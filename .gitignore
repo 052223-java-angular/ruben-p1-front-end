@@ -15,6 +15,12 @@ node_modules/
 .angular/
 .idea/
 
+//ignore dist
+dist
+.dist
+/dist
+./dist
+
 # Package Files #
 *.jar
 *.war

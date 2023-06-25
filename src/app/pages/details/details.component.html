@@ -2,12 +2,12 @@
 
     <ng-container *ngIf="creature">
 
-        <div class = "flex justify-between">
+        <div class="flex align-middle">
 
-            <div class="flex-col">
-                <img src="{{creature.image}}" class="max-w-fit">
+            <div class="flex-col space-y-10 p-20">
+                <img src="{{creature.image}}" class="scale-150">
 
-                <div class="pt-10 object-bottom">
+                <div class="flex-row space-x-2 pt-10">
                     <button *ngIf="sessionStorage.getItem('user') != null" class="bg-amber-600 px-11 py-10 rounded-md transition hover:bg-slate-400"
                             (click)="addToArmy()">
                         <p>Add To Army</p>
@@ -16,6 +16,9 @@
                     <button *ngIf="sessionStorage.getItem('user') == null" class="bg-slate-400 px-11 py-10 rounded-md transition hover:bg-slate-400" routerLink="/register">
                         <p>Register to enlist</p>
                     </button>
+
+                    <button (click)="backClicked()" class=" p-10 bg-amber-400 px-5 py-2 shadow rounded-md  z-25">Go Back</button>
+
                 </div>
             </div>
 
