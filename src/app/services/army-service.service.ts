@@ -3,12 +3,14 @@ import {Observable} from "rxjs";
 import {CreaturePayload} from "../models/creature-payload";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {UserServiceService} from "./user-service.service";
+import { environment} from "../environments/environments";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArmyServiceService {
-  baseurl = 'http://localhost:8080/api'
+  //baseurl = 'http://localhost:8080/api'
+  baseurl: string = environment.apiBaseUrl;
 
   private httpOptions = {
     headers: new HttpHeaders({

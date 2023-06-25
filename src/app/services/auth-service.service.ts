@@ -4,14 +4,15 @@ import {RegisterPayload} from "../models/register-payload";
 import {Observable} from "rxjs";
 import {Auth} from "../models/auth";
 import {LoginPayload} from "../models/login-payload";
+import {environment} from "../environments/environments";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-  // set the base url
-  baseurl = 'http://localhost:8080/api'
+  //baseurl = 'http://localhost:8080/api'
+  baseurl: string = environment.apiBaseUrl;
   constructor(private http: HttpClient) { }
 
   // takes front end inputs and sends DTO to backend with register input

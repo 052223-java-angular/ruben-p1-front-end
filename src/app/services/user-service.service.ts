@@ -7,6 +7,7 @@ import {UsersAllPayload} from "../models/users-all-payload";
 import {ArmyPayload} from "../models/army-payload";
 import { SessionService} from "./session.service";
 import {UsernamePayload} from "../models/username-payload";
+import {environment} from "../environments/environments";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class UserServiceService {
 
 
   // set the base url
-  baseurl = 'http://localhost:8080/api'
+  //baseurl = 'http://localhost:8080/api'
+  baseurl: string = environment.apiBaseUrl;
 
   httpOptions = {
     headers: new HttpHeaders({

@@ -6,6 +6,7 @@ import {CreaturePayload} from "../models/creature-payload";
 import {CreatureObjectPayload} from "../models/creature-object-payload";
 import { UserServiceService} from "./user-service.service";
 import {SoldierPayload} from "../models/soldier-payload";
+import {environment} from "../environments/environments";
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class CreatureServiceService {
   // set the base url
   baseurl = 'https://botw-compendium.herokuapp.com/api/v2'
 
-  siteUrl = 'http://localhost:8080/api/monsters/'
-
+  //siteUrl = 'http://localhost:8080/api/monsters/'
+  siteUrl: string = environment.apiBaseUrl + '/monsters/';
 
 
   // authenticate services
