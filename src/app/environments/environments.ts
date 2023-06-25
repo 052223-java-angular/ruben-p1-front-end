@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'http://localhost:8080/yolp/api',
+    apiBaseUrl: 'http://ruben-p1-env.eba-gp6ssm2m.us-west-1.elasticbeanstalk.com/hyrule/api',
 }
