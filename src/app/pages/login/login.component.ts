@@ -36,7 +36,6 @@ export class LoginComponent {
 
     // call service to send payload to backend api
     this.authService.login(payload).subscribe({
-
       next: value => {
         console.log("Welcome back!");
 
@@ -51,9 +50,16 @@ export class LoginComponent {
         console.log("Login error has occured");
         console.log(err);
       }
-    })
+    });
 
-    console.log(this.loginForm.value);
+    if (!this.loginForm.value.username) {
+      this.loginForm.get('username')?.markAsDirty();
+    }
+    if (!this.loginForm.value.password) {
+      this.loginForm.get('password')?.markAsDirty();
+    }
+
+    console.log("login complete");
   }
 
 

@@ -19,6 +19,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ArmyComponent } from './pages/army/army.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { BattleComponent } from './pages/battle/battle.component';
+import {ToasterModule, ToasterService} from "ngx-toaster/src/lib";
+
 
 @NgModule({
   declarations: [

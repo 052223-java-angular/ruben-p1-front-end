@@ -6,7 +6,7 @@
             <img src="https://pyxis.nymag.com/v1/imgs/a1b/6d3/2ffee1dfffca3cdfca02b8ea366eda3510-zelda.rsquare.w330.jpg" alt="zelda" class="pl-5" class="top-left float-left">
 
 
-            <button *ngIf="sessionStorage.getItem('user') != user.username" class="w-1/3 bg-cyan-500 px-5 py-2 shadow rounded-md  z-25">Fight</button>
+            <button  *ngIf="sessionStorage.getItem('user') != user.username" (click)="startBattle(user.username)" class="w-1/3 bg-cyan-500 px-5 py-2 shadow rounded-md  z-25">Fight</button>
 
 
         </div>

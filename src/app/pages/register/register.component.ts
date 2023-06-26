@@ -46,6 +46,20 @@ export class RegisterComponent implements OnInit {
       }
     })
 
+    if (!this.registerForm.value.username) {
+      this.registerForm.get('username')?.markAsDirty();
+    }
+
+
+    if (!this.registerForm.value.password) {
+      this.registerForm.get('password')?.markAsDirty();
+    }
+
+
+    if (!this.registerForm.value.confirmPassword) {
+      this.registerForm.get('confirmPassword')?.markAsDirty();
+    }
+
     console.log(this.registerForm.value);
   }
 

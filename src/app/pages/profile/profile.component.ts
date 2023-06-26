@@ -8,6 +8,8 @@ import {SoldierModel} from "../../models/soldier-model";
 import {CreaturePayload} from "../../models/creature-payload";
 import {DeletePayload} from "../../models/delete-payload";
 import {StatsPayload} from "../../models/returns/stats-payload";
+import {BattlePayload} from "../../models/battle-payload";
+import {BattleLog} from "../../models/returns/battle-log";
 
 @Component({
   selector: 'app-profile',
@@ -23,12 +25,15 @@ export class ProfileComponent {
   public user!: UsersAllPayload;
   public army: SoldierModel[] = [];
   public stats!: StatsPayload;
+  public battle!: BattlePayload;
+  public results!: BattlePayload;
   public list: boolean = false;
   protected readonly sessionStorage = sessionStorage;
 
   global() {
     this.ngOnInit();
     this.openSoldiers();
+    this.getStats()
   }
 
   onRowClicked(name: string) {
@@ -67,6 +72,25 @@ export class ProfileComponent {
       }
     })
 
+  }
+
+  startBattle(soldier_id: string) {
+    const payload: BattlePayload = {
+      player_1: soldier_id,
+      player_2: sessionStorage.getItem('user')!,
+      user_id: sessionStorage.getItem('id')!,
+    }
+
+    this.armyService.startBattle(payload).subscribe({
+
+      next: (resp: any) => {
+        console.log("Battle completed! ", resp);
+        this.results = resp;
+      },
+      error: err => {
+        console.log("Error with battle. No draw/No win/loss", err);
+      }
+    });
   }
 
   // dismiss that soldier
