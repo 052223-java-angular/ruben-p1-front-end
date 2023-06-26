@@ -8,6 +8,7 @@ import {ArmyPayload} from "../models/army-payload";
 import { SessionService} from "./session.service";
 import {UsernamePayload} from "../models/username-payload";
 import {environment} from "../environments/environments";
+import { StatsPayload} from "../models/returns/stats-payload";
 
 @Injectable({
   providedIn: 'root'
@@ -47,10 +48,10 @@ export class UserServiceService {
   }
 
   // get by param
-  getArmy(username: string) {
-    let queryParams: HttpParams = new HttpParams().set('username', username)
-    console.log(`hitting new get other users army`)
-    return this.http.get(`${this.baseurl}armies/${username}`)
+  getStats(username: string): Observable<StatsPayload> {
+    //let queryParams: HttpParams = new HttpParams().set('username', username)
+    console.log(`[Get stats process...] username:`+username+ `` )
+    return this.http.get<StatsPayload>(`${this.baseurl}/stats/${username}`)
   }
 
   sortAlpha(): Observable<UsersAllPayload[]>{

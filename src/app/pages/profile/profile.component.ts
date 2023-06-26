@@ -7,6 +7,7 @@ import {ArmyServiceService} from "../../services/army-service.service";
 import {SoldierModel} from "../../models/soldier-model";
 import {CreaturePayload} from "../../models/creature-payload";
 import {DeletePayload} from "../../models/delete-payload";
+import {StatsPayload} from "../../models/returns/stats-payload";
 
 @Component({
   selector: 'app-profile',
@@ -21,6 +22,7 @@ export class ProfileComponent {
   public army_id: string = "";
   public user!: UsersAllPayload;
   public army: SoldierModel[] = [];
+  public stats!: StatsPayload;
   public list: boolean = false;
   protected readonly sessionStorage = sessionStorage;
 
@@ -35,7 +37,6 @@ export class ProfileComponent {
     if(this.manage == false ) {
       this.router.navigate([`details/`+ (name)])
     }
-
   }
 
 
@@ -43,7 +44,7 @@ export class ProfileComponent {
               private userService: UserServiceService,
               private armyService: ArmyServiceService,
               private route: ActivatedRoute,
-              private router: Router
+              public router: Router
               //private ref: ChangeDetectorRef
               ) {
     //ref.detach();
@@ -99,6 +100,19 @@ export class ProfileComponent {
     console.log('manage army hit and set to: '+ this.manage)
   }
 
+  // get user statistics
+  getStats() {
+    this.userService.getStats(this.username).subscribe( {
+      next: (resp: any) => {
+        console.log("Stats recieved, results: ", resp)
+        this.stats=resp;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
   ngOnInit() {
     this.userService.getUser(this.username).subscribe({
 
@@ -117,6 +131,7 @@ export class ProfileComponent {
 
   ngAfterViewInit() {
     this.openSoldiers();
+    this.getStats();
   }
 
 }

@@ -1,4 +1,7 @@
-<div *ngIf="users" class="grid justify-items">
+
+
+
+<div *ngIf="users" class="grid justify-items pb-52 pt-20">
     <div *ngFor="let u of users"
          class = "w-1/2 gap-5 px-5 py-10 shadow-xl cursor-pointer transition hover:bg-[#9FC088] duration-300"
         [routerLink]="['/profile', u.username]">
@@ -8,7 +11,5 @@
             <p>ARMY ID: {{u.army_id}}</p>
             <p>STATS ID: {{u.stats_id}}</p>
         </div>
-
     </div>
-    
 </div>

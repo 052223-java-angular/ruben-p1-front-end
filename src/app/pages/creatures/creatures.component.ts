@@ -5,6 +5,7 @@ import {CreaturePayload} from "../../models/creature-payload";
 import {CreatureServiceService} from "../../services/creature-service.service";
 import {Router} from "@angular/router";
 import {SessionService} from "../../services/session.service";
+import {Location} from "@angular/common";
 
 
 @Component({
@@ -15,7 +16,11 @@ import {SessionService} from "../../services/session.service";
 export class CreaturesComponent {
   public creatures: CreaturePayload[] = [];
 
-  constructor(private creatureService: CreatureServiceService, private router: Router, private  sessionService: SessionService) { }
+  constructor(private creatureService: CreatureServiceService,
+              private router: Router,
+              private  sessionService: SessionService,
+              private _location: Location
+  ) { }
 
   ngOnInit() {
     this.creatureService.getUsers().subscribe({
@@ -34,6 +39,10 @@ export class CreaturesComponent {
         console.log(err);
       }
     })
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   onRowClicked(c: CreaturePayload) {
