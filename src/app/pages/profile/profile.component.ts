@@ -6,6 +6,7 @@ import {UserServiceService} from "../../services/user-service.service";
 import {ArmyServiceService} from "../../services/army-service.service";
 import {SoldierModel} from "../../models/soldier-model";
 import {CreaturePayload} from "../../models/creature-payload";
+import {DeletePayload} from "../../models/delete-payload";
 
 @Component({
   selector: 'app-profile',
@@ -59,9 +60,22 @@ export class ProfileComponent {
 
   // dismiss that soldier
   dismissSoldier(soldier_id: string) {
+    const payload: DeletePayload = {
+      soldier_id: soldier_id,
+      user_id: sessionStorage.getItem('id')!,
+    }
+
     console.log('manage:'+ this.manage + ', deleting soldier: ' + soldier_id)
     if (this.manage == true) {
-      this.armyService.deleteSoldiers(soldier_id);
+      this.armyService.deleteSoldiers(payload).subscribe({
+        next: resp => {
+          console.log("Soldier deleted");
+          this.openSoldiers();
+        },
+        error: err => {
+          console.log("Error dismisses soldier")
+        }
+      });
     }
   }
 

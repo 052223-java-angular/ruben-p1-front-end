@@ -4,6 +4,7 @@ import {CreaturePayload} from "../models/creature-payload";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {UserServiceService} from "./user-service.service";
 import { environment} from "../environments/environments";
+import {DeletePayload} from "../models/delete-payload";
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +30,14 @@ export class ArmyServiceService {
   }
 
   // remove soldiers from army
-  deleteSoldiers(soldier_id: string): Observable<void>{
-    console.log('[army-service] Deleting soldier: ' + soldier_id)
-    let queryParams = new HttpParams().set('user_id', sessionStorage.getItem('user')!)
-    return this.http.delete<void>(`${this.baseurl}/soldier/delete/` + soldier_id,
-        this.httpOptions
+  deleteSoldiers(dissMiss: DeletePayload): Observable<void>{
+    console.log('[army-service] Deleting soldier: ' + dissMiss.soldier_id)
+    //let queryParams = new HttpParams().set('user_id', sessionStorage.getItem('user')!)
+    const headers = new HttpHeaders().set('auth-token', sessionStorage.getItem('token')!);
+    const url = `${this.baseurl}/soldier/delete/${dissMiss.soldier_id}`;
+    console.log("Url: " + url);
+
+    return this.http.delete<void>(url, {headers: headers, body: dissMiss}
     );
   }
 
