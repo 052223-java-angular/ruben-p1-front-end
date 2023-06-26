@@ -1,39 +1,20 @@
-
+<p>register works!</p>
 <form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="flex flex-col items-center gap-10 my-40">
-    <h1 class="float font-bold text-4xl">REGISTER...</h1>
+    <h1 class="font-bold text-4xl">REGISTER...</h1>
     <label class="flex flex-col">
         Username:
         <input class="bg-amber-100 px-5 py-2 rounded-md shadow-xl" type="text" placeholder="Username" formControlName="username"/>
     </label>
-
-    <div class="text-red-500" *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty ||  registerForm.get('username')?.touched)">
-        <small *ngIf="registerForm.get('username')?.errors?.['required']">
-            Username is required
-        </small>
-    </div>
-
 
     <label class="flex flex-col">
         Password:
         <input class="bg-amber-100 px-5 py-2 rounded-md shadow-xl" type="password" placeholder="Password" formControlName="password"/>
     </label>
 
-    <div class="text-red-500" *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty ||  registerForm.get('username')?.touched)">
-        <small *ngIf="registerForm.get('username')?.errors?.['required']">
-            Password is required
-        </small>
-    </div>
-
     <label class="flex flex-col">
         Confirm Password:
         <input class="bg-amber-100 px-5 py-2 rounded-md shadow-xl" type="password" placeholder="Confirm Password" formControlName="confirmPassword"/>
     </label>
-
-    <div class="text-red-500" *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty ||  registerForm.get('username')?.touched)">
-        <small *ngIf="registerForm.get('username')?.errors?.['required']">
-            Confirm Password is required
-        </small>
-    </div>
 
     <button type="submit" class="bg-slate-400 px-5 py-2 rounded-md transition hover:ease-out hover:scale-110 duration">Sign up</button>
 

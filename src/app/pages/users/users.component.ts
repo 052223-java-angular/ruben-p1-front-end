@@ -16,7 +16,7 @@ export class UsersComponent implements  OnInit{
     this.userService.getUsers().subscribe({
         next: (resp: UsersAllPayload[]) => {
             this.users = resp;
-            console.log("users retrieved hit:" + resp)
+            console.log("users retrieved hit and returned");
       },
         error: (err) => {
             console.log("Issue retrieving armies:" + err);
