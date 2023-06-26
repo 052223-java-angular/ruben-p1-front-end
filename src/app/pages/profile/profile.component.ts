@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {SessionService} from "../../services/session.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UsersAllPayload} from "../../models/users-all-payload";
 import {UserServiceService} from "../../services/user-service.service";
 import {ArmyServiceService} from "../../services/army-service.service";
@@ -29,11 +29,21 @@ export class ProfileComponent {
     this.openSoldiers();
   }
 
+  onRowClicked(name: string) {
+    console.log(name);
+    let temp = name;
+    if(this.manage == false ) {
+      this.router.navigate([`details/`+ (name)])
+    }
+
+  }
+
 
   constructor(private sessionService: SessionService,
               private userService: UserServiceService,
               private armyService: ArmyServiceService,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private router: Router
               //private ref: ChangeDetectorRef
               ) {
     //ref.detach();
@@ -108,6 +118,5 @@ export class ProfileComponent {
   ngAfterViewInit() {
     this.openSoldiers();
   }
-
 
 }
